@@ -1,0 +1,27 @@
+﻿
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-10 col-with-border" >
+			<div class="row row-separator">
+				<div class="col-xs-9 pull-left col-without-padding">
+					<span class="label label-default label-header-sm">Transfer List</span>
+				</div>
+				<div class="col-xs-3  col-without-padding">
+					<button type="button" class="btn btn-default btn-sm pull-right" ng-click="exportarPDF()" title="Export to Pdf"><img src="/js/angularApps/proveedores/Assets/_img/acroread.png"></span></button>
+					<button type="button" class="btn btn-default btn-sm pull-right" ng-click="verificarCostos()" title="validate cost" ng-show="model.showVerificarCostos"><span class="icon-cash rojoSpt"></span></button>
+					<button type="button" class="btn btn-default btn-sm pull-right" ng-click="confirmarServicio()" title="confirm service" ng-show="model.showConfirmarServicio"><span class="icon-checkmark rojoSpt"></span></button>
+					<button type="button" class="btn btn-default btn-sm pull-right" ng-click="openDetalleTraslado()" title="Details"><span class="icon-magnifier rojoSpt"></span></button>
+				</div>
+			</div>
+			<div class="row">
+				<div class=" col-xs-12" >
+					<div class="row">
+						<div class="col-xs-12">
+							<div spt-k-grid="tablaTraslados" spt-k-grid-titulo=""></div>
+						</div>
+					</div>           
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

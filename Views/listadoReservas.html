@@ -1,0 +1,70 @@
+﻿
+<div class="container-fluid">
+
+
+<div class="row">
+	<div class="col-xs-12 col-with-border" >
+		<div class="row row-separator">
+			<div class="col-xs-11 pull-left col-without-padding">
+				<span class="label label-default label-header-sm">Booking List</span>
+			</div>
+			<div class="col-xs-1  col-without-padding">
+				<!-- <button type="button" class="btn btn-default btn-sm pull-right" ng-click="openDetalleReserva()" title="Details"><span class="icon-search rojoSpt"></span></button> -->
+			</div>
+		</div>
+		<div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default" style="width: 100%;">
+                    <div class="panel-heading">Search</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label>From date</label>
+                                <div spt-fecha calendario="true" ng-model="model.startingDateFilter" spt-directiva="{bsClass:'sm'}"></div>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Booking status</label>
+                                <select id="bookStatusFilter" name="bookStatusFilter" ng-model="model.bookStatusFilter" class="input-sm form-control">
+                                    <option value="" >all</option>
+                                    <option value="OK">ok</option>
+                                    <option value="CLX">cancelled</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Service status</label>
+                                <select id="servicesStatusFilter" name="servicesStatusFilter" ng-model="model.servicesStatusFilter" class="input-sm form-control">
+                                    <option value="0">all</option>
+                                    <option value="1" >pending</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label>&nbsp;</label>
+                                <div class="input-group input-group-sm">
+                                    <button type="button" class="btn btn-default" ng-click="obtenerListadoReservas()" title="Search Bookings"><span class="icon-magnifier"></span>&nbsp;Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+		</div>
+		<div class="row">
+			<div class="col-xs-12" >
+				<div class="row">
+					<div class="col-xs-12">
+						<div spt-k-grid="tablaReservas" spt-k-grid-titulo=""></div>
+					</div>
+				</div>           
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+    
+   
+
+</div>

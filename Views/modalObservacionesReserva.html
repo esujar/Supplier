@@ -1,0 +1,56 @@
+﻿<div>
+    
+        <div class=" modal-header">
+            <h3 class="modal-title">
+              remarks
+                <span class="icon-cross pull-right" ng-click="cancel();" title="Cancelar"></span>
+            </h3>
+        </div>
+
+        <div class="modal-body">
+             <div class="row row-separator">
+				<div class="col-xs-10 pull-left col-with-border">
+					<div class="row row-separator">
+						<div class="col-xs-10 pull-left col-without-padding">
+							<span class="label label-default label-header-sm">remarks</span>
+						</div>
+						<div class="col-xs-2 col-without-padding pull-right" >
+							<button type="button" class="btn btn-default pull-right btn-sm" ng-click="editarObservacion(1)" title="mark as read"><span class="icon-book rojoSpt"></span>&nbsp;</button>
+							<button type="button" class="btn btn-default pull-right btn-sm" ng-click="editarObservacion(0)" title="validate remark details" ><span class="icon-checkmark rojoSpt"></span>&nbsp;</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12" >
+							<div spt-k-grid="tablaObservaciones" spt-k-grid-titulo=""></div>
+						</div>
+					</div>
+				</div>
+			</div>  
+			<div class="row">
+				
+				<div class="col-xs-10 col-with-border" >
+					<div class="row">
+						<form name="formRemark" no validate>
+							<div class="col-xs-3" ng-class="{ 'has-error' : formRemark.tipoCalendario.$invalid && model.submit}">
+								<label >new remark type</label>
+								<select id="tipoCalendario" name="tipoCalendario" ng-model="model.tipoCalendario" class="form-control input-sm" ng-options="item.idTipoCalendario as item.nombreTipoCalendario for item in model.aTiposCalendario" required></select>
+							</div>
+							<div class="col-xs-8" >
+								<label>new remark text</label>
+								<textarea id="textoCalendario" name="textoCalendario" style="width: 100%; height: 58px;" ng-model="model.textoCalendario" class="form-control input-sm"></textarea>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+           
+        </div>     
+		
+		<div class="modal-footer">
+			<div class="form-group pull-right">
+				<button type="button" class="btn btn-default" ng-click="ok(formRemark.$invalid)"><span class="icon-circle-plus"></span>&nbsp;add new</button>
+			</div>
+		</div>
+      
+    
+</div>

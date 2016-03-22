@@ -1,0 +1,170 @@
+<div>
+    <style type="text/css">
+	    @page { margin: 1em; }
+		@page { size: US-Letter landscape; }
+        .cabecera-informe {
+            font-size: 90%;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 0;
+        }
+        .cabecera-bloque {
+            font-size: 80%;
+            font-weight: bold;
+            margin: 4px 0 2px 0;
+        }
+        .tbl {
+	        border: none;
+	        border-collapse:separate;
+	        border-spacing:1px;
+	        margin-top: 0;
+	        --table-layout:fixed;
+	        width: 100%;
+        }
+        .tblHdr {
+            border-color: #D0D0D0;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+	        background-color:#F0F0F0;
+	        font-weight: bold;
+			font-family: Arial, times;
+            vertical-align: middle;
+            font-size: 75%;
+            line-height: 1em;
+            padding:5px 2px 5px 2px;
+        }
+        .tblData {
+            border-color: #D0D0D0;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+            vertical-align: top;
+            font-size: 60%;
+			font-family: Arial, times;
+            line-height: 0.95em;
+            padding: 5px 2px 5px 2px; 
+        }
+        .no-bottom-border {
+            border-bottom-width: 0;
+        }
+		.titulo-informe{
+		    font-size: 1.2em;
+			margin: .2em !important;
+			padding: .2em !important;
+			white-space: nowrap !important;
+			overflow: hidden;
+			background: linear-gradient(#D00000, #D00000, #A00000) repeat scroll 0 0 #D00000 !important;
+			color: #fff !important;
+			text-overflow: ellipsis;
+			font-family: Arial, times;
+  
+		}
+    </style>
+    <div class="titulo-informe">booking details. SpT ref:  {{modelRsv.idReserva}}</div>
+    <br/><br/>
+	<p class="cabecera-informe">
+		status: {{modelRsv.status}} //
+        rq services: {{modelRsv.totalPte}} //
+        SpT contact: {{modelRsv.contactoSpt}} //
+        supplier contact: {{modelRsv.nombreContactoProv}}
+    </p>
+    <br/> 
+    <p class="cabecera-bloque">services:</p>
+    <table class="tbl" style="repeat-header: yes;">
+        <thead>
+            <tr>
+                <td colspan="6"></td>
+                <td colspan="3" class="tblHdr" style="text-align: center;">room type</td>
+                <td colspan="4"></td>
+            </tr>
+            <tr>
+                <td class="tblHdr" style="width: 12mm;">service</td>
+                <td class="tblHdr" style="width: 10mm;">status</td>
+                <td class="tblHdr" style="width: 20mm;">city&nbsp;in</td>
+                <td class="tblHdr" style="width: 20mm;">date&nbsp;in</td>
+                <td class="tblHdr" style="width: 20mm;">city&nbsp;out</td>
+                <td class="tblHdr" style="width: 20mm;">date&nbsp;out</td>
+				<td class="tblHdr" style="width: 20mm;">supplier</td>
+                <td class="tblHdr" style="width: 5mm;">sgl</td>
+                <td class="tblHdr" style="width: 5mm;">dbl</td>
+                <td class="tblHdr" style="width: 5mm;">tpl</td>
+                <td class="tblHdr" style="width: 5mm;">pax</td>
+                <td class="tblHdr" style="width: 30mm;">rooming</td>
+                <td class="tblHdr" style="width: 96mm;">service info</td>
+                <td class="tblHdr" style="width: 20mm;">net cost</td>
+            </tr>
+        </thead>
+        
+        <tr ng-repeat="srv in model.aServicios">
+			<td class="tblData" style="width: 12mm;">{{srv.tipoReserva}}</td>
+			<td class="tblData" style="text-align: center;width: 10mm;">{{srv.codigoStatus}}</td>
+			<td class="tblData" style="width: 20mm;">{{srv.ciudadInicio}}</td>
+			<td class="tblData" style="text-align: center;width: 20mm;">{{srv.fechaInicio | date:"dd/MMM/yyyy"}}</td>
+			<td class="tblData" style="width: 20mm;">{{srv.ciudadFin}}</td>
+			<td class="tblData" style="text-align: center;width: 20mm;">{{srv.fechaFin | date:"dd/MMM/yyyy"}}</td>
+			<td class="tblData" style="width: 30mm;">{{srv.prestatario}}</td>
+			<td class="tblData" style="text-align: right;width: 5mm;">{{srv.sgl ? srv.sgl: ""}}</td>
+			<td class="tblData" style="text-align: right;width: 5mm;">{{srv.dbl ? srv.dbl : ""}}</td>
+			<td class="tblData" style="text-align: right;width: 5mm;">{{srv.tpl ? srv.tpl : ""}}</td>
+			<td class="tblData" style="text-align: right;width: 5mm;">{{srv.totalPax}}</td>
+			<td class="tblData" style="width: 30mm;">{{srv.nombreRoomingList}}</td>
+			<td class="tblData" style="width: 96mm;">{{srv.nombreServicio + (srv.iniCiaAerea &&  srv.vuelo ? " // flight: " + srv.iniCiaAerea + srv.vuelo + " " + srv.fechaVueloView + " " +  "from [" + srv.aeroSalida + "] " +  srv.aeroNombreSalida + " " + "to [" + srv.aeroLlegada + "] " +  srv.aeroNombreLlegada +  " " + srv.horaRecogida  +   (srv.observacionesReservaServicio ? " // obs.: " + srv.observacionesReservaServicio : "")        : "")}}</td><!-- -->
+			<td class="tblData" style="text-align: right;width: 20mm;">{{ srv.costoTotalReservaServicio + " "+ srv.moneda}}</td> <!--srv.facturable ? (srv.costoTotalReservaServicio ? srv.costoTotalReservaServicio + " "+ srv.moneda : " ") : " "-->
+			
+		</tr>
+	</table>
+	<br/>
+	<div ng-repeat="roomList in model.aRoomList">
+		<p class="cabecera-bloque">rooming: {{'"' + roomList.nombreRoomingList + '"'}}:</p>
+		<table class="tbl" style="repeat-header: yes;">
+			<thead>
+				<tr>
+					<td class="tblHdr" style="width: 10mm;">main</td>
+					<td class="tblHdr" style="width: 85mm;">name</td>
+					<td class="tblHdr" style="width: 20mm;">room type</td>
+					<td class="tblHdr" style="width: 20mm;">add. inf.</td>
+					<td class="tblHdr" style="width: 20mm;">d.o.b.</td>
+					<td class="tblHdr" style="width: 40mm;">nationality</td>
+					<td class="tblHdr" style="width: 20mm;">passport</td>
+					<td class="tblHdr" style="width: 20mm;">expires</td>
+					<td class="tblHdr" style="width: 40mm;">residence</td>
+				</tr>
+			</thead>
+				<tr ng-repeat="pax in roomList.roomingList">
+					<td class="tblData">{{pax.esPrincipal}}</td>
+					<td class="tblData">{{pax.trato + " " + pax.nombreCompleto}}</td>
+					<td class="tblData">{{pax.distribucion}}</td>
+					<td class="tblData">{{pax.informacionAdicional}}</td>
+					<td class="tblData">{{pax.fechaNacimiento | date:"dd/MMM/yyyy"}}</td>
+					<td class="tblData">{{pax.nacionalidad}}</td>
+					<td class="tblData">{{pax.documento}}</td>
+					<td class="tblData">{{pax.fechaExpiracionDocumento | date:"dd/MMM/yyyy"}}</td>
+					<td class="tblData">{{pax.residencia}}</td>
+				</tr>
+		</table>
+	</div>
+	<br/>
+	<p class="cabecera-bloque">remarks: {{model.aObservaciones.length==0?"": "N/A"}}</p>
+    
+    <table class="tbl" style="repeat-header: yes;">
+        <thead>
+            <tr>
+                <td class="tblHdr" style="width: 20mm;">date</td>
+                <td class="tblHdr" style="width: 20mm;">type</td>
+                <td class="tblHdr" style="width: 200mm;">message</td>
+                <td class="tblHdr" style="width: 20mm;">validated</td>
+                <td class="tblHdr" style="width: 20mm;">read</td>
+            </tr>
+        </thead>
+       
+      <tr ng-repeat="rmk in model.aObservaciones">
+            <td class="tblData">{{rmk.fReservaCalendario | date:"dd/MMM/yyyy"}}</td>
+            <td class="tblData">{{rmk.ubicacion == 1? "Spt" : "Supplier" }}</td>
+            <td class="tblData">{{rmk.descripcionReservaCalendario}}</td>
+            <td class="tblData">{{rmk.validado ? "yes" : "no"}}</td>
+            <td class="tblData">{{rmk.leido ? "yes": "no"}}</td>
+        </tr>
+       
+    </table>	
+        
+
+</div>

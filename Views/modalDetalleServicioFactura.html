@@ -1,0 +1,43 @@
+﻿
+
+<div >
+	 <style>
+       
+
+        .modal-lg {
+            width: 60% !important;
+        }
+        
+      
+
+       
+    </style>
+	   <div class=" modal-header">
+            <h3 class="modal-title">
+               
+                <span class="icon-cross pull-right" ng-click="cancel();" title="Cancel"></span>
+            </h3>
+        </div>
+	<div class="modal-body">
+	    
+		<div class="row">
+			<div class="col-xs-11 pull-left col-with-border">
+				<div class="row">
+					<div class="col-xs-11 pull-left col-without-padding">
+						<span class="label label-default label-header-sm">Services of {{model.numeroFactura}}</span>
+					</div>
+					<div class="col-xs-1 col-without-padding pull-right" >
+						<button type="button" class="btn btn-default btn-sm pull-right" ng-click="exportarExcel()" title="Export to Excel"><img src="/js/angularApps/proveedores/Assets/_img/excel.png"></span></button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12" >
+						<div spt-k-grid="tablaServicios" spt-k-grid-titulo=""></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+</div>

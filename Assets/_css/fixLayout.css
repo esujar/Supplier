@@ -1,0 +1,57 @@
+﻿/*html {*/
+	/*height: 100%;*/
+/*}*/
+/*header, nav, section, article, aside, footer {*/
+	/*display: block;*/
+/*}*/
+/*body {*/
+	/*height: 100%;*/
+	/*overflow-y: scroll;*/
+/*}*/
+
+/* Main wrapper */
+/*#wrapper {*/
+	/*width: 100%;*/
+	/*margin: 0 auto;*/
+	/*height: auto !important;*/
+/*}*/
+
+
+/* Header
+-----------------------------------------------------------------------------*/
+/*#header {*/
+    /*background-color: #F8F8F8;*/
+    /*background: linear-gradient(to bottom, #FFFFFF, #F2F2F2) no-repeat scroll 0 0 #F8F8F8;*/
+    /*border-bottom: 1px solid #D0D0D0;*/
+    /*border-top: 5px solid #D00000;*/
+    /*box-shadow: 0 3px 5px rgba(100, 100, 100, 0.15);*/
+    /*height: 48px;*/
+    /*left: 0;*/
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*width: 100%;*/
+    /*z-index: 10;*/
+/*}*/
+
+/*#header img.logo {*/
+    /*float: left;*/
+    /*margin-right: 2em;*/
+    /*margin-top: -4px;*/
+/*}*/
+
+/*#header .texto-logo {*/
+    /*border-right: 1px solid #D0D0D0;*/
+    /*color: #303030;*/
+    /*float: left;*/
+    /*font-size: 110%;*/
+    /*margin: 16px 0 0;*/
+    /*padding-right: 1em;*/
+    /*text-shadow: 1px 1px rgba(48, 48, 48, 0.2);*/
+/*}*/
+
+
+/* Middle
+-----------------------------------------------------------------------------*/
+/*#content {*/
+	/*padding: 64px 4px 0;*/
+/*}*/

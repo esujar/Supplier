@@ -1,0 +1,108 @@
+﻿<div>
+
+    <style type="text/css">
+	     @page { margin: 1em; }
+		@page { size: US-Letter landscape; }
+	   
+        .cabecera-informe {
+            font-size: 90%;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 0;
+        }
+        .cabecera-bloque {
+            font-size: 80%;
+            font-weight: bold;
+            margin: 4px 0 2px 0;
+        }
+        .tbl {
+	        border: none;
+	        border-collapse:separate;
+	        border-spacing:1px;
+	        margin-top: 0;
+	       --table-layout:fixed;
+	        width: 100%;
+        }
+       .tblHdr {
+            border-color: #D0D0D0;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+	        background-color:#F0F0F0;
+	        font-weight: bold;
+			font-family: Arial, times;
+            vertical-align: middle;
+            font-size: 70%;
+            line-height: 1em;
+            padding:5px 2px 5px 2px;
+        }
+        .tblData {
+            border-color: #D0D0D0;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+            vertical-align: top;
+            font-size: 60%;
+			font-family: Arial, times;
+            line-height: 0.95em;
+            padding: 5px 2px 5px 2px; 
+        }
+        .no-bottom-border {
+            border-bottom-width: 0;
+        }
+		.titulo-informe{
+		    font-size: 1.2em;
+			margin: .2em !important;
+			padding: .2em !important;
+			white-space: nowrap !important;
+			overflow: hidden;
+			background: linear-gradient(#D00000, #D00000, #A00000) repeat scroll 0 0 #D00000 !important;
+			color: #fff !important;
+			text-overflow: ellipsis;
+			font-family: Arial, times;
+  
+		}
+    </style>
+
+    <div class="titulo-informe">custom list of confirmed hotels. services starting from {{model.hoy}}</div>
+	<br/><br/>
+    <table class="tbl" style="repeat-header: yes;">
+        <thead>
+            <tr>
+                <td colspan="6"></td>
+                <td colspan="3" class="tblHdr" style="text-align: center;">room type</td>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+               <th class="tblHdr" style="width: 15mm;">SpT ref.</td>
+                <td class="tblHdr" style="width: 10mm;">status</td>
+                <td class="tblHdr" style="width: 18mm;">city</td>
+                <td class="tblHdr" style="width: 18mm;">date&nbsp;in</td>
+                <td class="tblHdr" style="width: 18mm;">date&nbsp;out</td>
+                <td class="tblHdr" style="width: 30mm;">supplier</td>
+                <td class="tblHdr" style="width: 6mm;">sgl</td>
+                <td class="tblHdr" style="width: 6mm;">dbl</td>
+                <td class="tblHdr" style="width: 6mm;">tpl</td>
+                <td class="tblHdr" style="width: 6mm;">pax</td>
+                <td class="tblHdr" style="width: 30mm;">main pax</td>
+                <td class="tblHdr" style="width: 56mm;">service info</td>
+				
+            </tr>
+        </thead>
+        
+        <tr ng-repeat="htl in model.aHoteles">
+		
+            <td class="tblData">{{htl.idReserva}}</td>
+            <td class="tblData" style="text-align: center;" >{{ htl.codigoStatus }}</td>
+            <td class="tblData">{{htl.ciudadInicio}}</td>
+            <td class="tblData" style="text-align: center;">{{htl.fechaInicio | date:"dd/MMM/yyyy"}}</td>
+            <td class="tblData" style="text-align: center;">{{htl.fechaFin | date:"dd/MMM/yyyy"}}</td></td>
+            <td class="tblData">{{ htl.prestatario }}</td>
+            <td class="tblData" style="text-align: right;">{{htl.sgl ? htl.sgl : ""}}</td>
+            <td class="tblData" style="text-align: right;">{{htl.dbl ? htl.dbl : ""}}</td>
+            <td class="tblData" style="text-align: right;">{{htl.tpl ? htl.tpl : ""}}</td>
+            <td class="tblData" style="text-align: right;">{{htl.totalPax ? htl.totalPax : ""}}</td>
+            <td class="tblData">{{obtenerListadoPax(htl.pasajerosDatos)[0].trato + " " + obtenerListadoPax(htl.pasajerosDatos)[0].nombreCompleto}}</td> 
+            <td class="tblData" style="text-align: left;">{{ htl.prestatario  +  " " + htl.nombreServicio}}</td>
+        </tr>
+        
+    </table>
+</div>

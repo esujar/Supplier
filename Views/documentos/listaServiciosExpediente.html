@@ -1,0 +1,164 @@
+<div>
+    <style type="text/css">
+	    @page { margin: 1em; }
+		@page { size: US-Letter landscape; }
+        .cabecera-informe {
+            font-size: 90%;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 0;
+        }
+        .cabecera-bloque {
+            font-size: 80%;
+            font-weight: bold;
+            margin: 4px 0 2px 0;
+        }
+        .tbl {
+	        border: none;
+	        border-collapse:separate;
+	        border-spacing:1px;
+	        margin-top: 0;
+	        --table-layout:fixed;
+	        width: 100%;
+        }
+        .tblHdr {
+            border-color: #D0D0D0;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+	        background-color:#F0F0F0;
+	        font-weight: bold;
+			font-family: Arial, times;
+            vertical-align: middle;
+            font-size: 81%;
+            line-height: 1em;
+            padding:5px 2px 5px 2px;
+        }
+        .tblData {
+            border-color: #D0D0D0;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+            vertical-align: top;
+            font-size: 66%;
+			font-family: Arial, times;
+            line-height: 0.95em;
+            padding: 5px 2px 5px 2px; 
+        }
+        .no-bottom-border {
+            border-bottom-width: 0;
+        }
+		.titulo-informe{
+		    font-size: 1.8em;
+			margin: .2em !important;
+			padding: .2em !important;
+			white-space: nowrap !important;
+			overflow: hidden;
+			background: linear-gradient(#D00000, #D00000, #A00000) repeat scroll 0 0 #D00000 !important;
+			color: #fff !important;
+			text-overflow: ellipsis;
+			font-family: Arial, times;
+  
+		}
+		
+		
+		.semaforo {
+			display: inline-block;
+			padding: 0 2px;
+			line-height: 1.2em;
+			-moz-border-radius: 2px;
+			-webkit-border-radius: 2px;
+			border-radius: 2px;
+		}
+		.semaforo.fw {
+			width: 95%;
+		}
+		.semaforo.fw.centro {
+			text-align: center;
+		}
+		.semaforo.fw.dcha {
+			text-align: right;
+		}
+
+		/*rojo*/
+		.sts-0,
+		.sts-PTE,
+		.sts-CAM
+		{
+		background-color:  #d00000;
+		color: white;
+
+		}
+
+		/*verde*/
+		.sts-CF,
+		.sts-OK,
+		.sts-DV,
+		.sts-DS
+		{
+		background-color: #008000;
+		color: white;
+
+		}
+
+		/*amarillo*/
+		.sts-PC,
+		.sts-PR,
+		.sts-WL,
+		.sts-EC,
+		.sts-RQ
+		{
+		background-color: #ffb000;
+
+		}
+		/*azul*/
+		.sts-MULTI {
+			background-color: #00b0ff;
+			color: white;
+		}
+		/*gris*/
+		.sts-CLX {
+			background-color: #606060;
+			color: white;
+		}
+		
+    </style>
+    <div class="titulo-informe">list of exp services.</div> 
+	<br/><br/>
+    <table class="tbl" style="repeat-header: yes;">
+        <thead>
+            <tr>
+                <td class="tblHdr" style="width: 10mm;">city</td>
+				<td class="tblHdr" style="width: 16mm;">supplier</td>
+				<td class="tblHdr" style="width: 7mm;">status</td>
+				<td class="tblHdr" style="width: 6mm;">pax</td>
+				 <td class="tblHdr" style="width: 4mm;">sgl</td>
+                <td class="tblHdr" style="width: 4mm;">dbl</td>
+                <td class="tblHdr" style="width: 4mm;">tpl</td>
+				<td class="tblHdr" style="width: 23mm;">service</td>
+                <td class="tblHdr" style="width: 9mm;">date</td>
+                <td class="tblHdr" style="width: 8mm;">type</td>
+				<td class="tblHdr" style="width: 10mm;">exp</td>
+				<td class="tblHdr" style="width: 4mm;">ext n</td>
+            </tr>
+        </thead>
+						
+		
+        <tr ng-repeat="srv in model.aServiciosExpediente">
+				<td class="tblData " style="width: 10mm;">{{srv.ciudadNombre}}</td>
+				<td class="tblData " style="width: 16mm;">{{srv.prestatario}}</td>
+				<td class="tblData " style="text-align: center;width: 7mm;"><div class="semaforo sts-{{srv.statusIniciales}}">{{srv.statusIniciales}}</div></td>
+				<td class="tblData" style="text-align: right;width: 6mm;">{{srv.pasajerosTotal==null ? '' : srv.pasajerosTotal   +  (srv.choferGuia != 0 ? '&nbsp;+&nbsp;' + srv.choferGuia : '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;') }}</td>
+				<td class="tblData" style="text-align: right; width: 4mm;">{{srv.pasajerosSgl == 0 || srv.pasajerosSgl == null? '' : srv.pasajerosSgl}}</td>
+				<td class="tblData" style="text-align: right;width: 4mm;">{{srv.pasajerosDbl == 0 || srv.pasajerosDbl == null? '' : srv.pasajerosDbl}}</td>
+				<td class="tblData" style="text-align: right;width: 4mm;">{{srv.pasajerosTpl == 0 || srv.pasajerosTpl == null? '' : srv.pasajerosTpl}}</td>
+				<td class="tblData" style="width: 23mm;" ><strong>{{srv.servicioNombre}}</strong></td>						
+				<td class="tblData" style="text-align: center;width: 9mm;">{{srv.fechaInicio | date:"dd/MMM/yyyy"}}</td>
+				<td class="tblData" style="width: 8mm;">{{srv.tipoServicio}}</td>
+				<td class="tblData" style="width: 10mm;">{{srv.expedienteNombre}}</td>
+				<td class="tblData" style="width: 4mm;">{{srv.nocheExtraShow}}</td>
+				
+		</tr>
+		
+
+        
+    </table>
+</div>

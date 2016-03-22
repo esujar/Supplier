@@ -1,0 +1,56 @@
+﻿
+<div >
+	 <style>
+       
+
+         .modal-lg {
+            width: 80% !important;
+        } 
+        
+      
+
+       
+    </style>
+	   <div class=" modal-header">
+            <h3 class="modal-title">
+				{{model.opc}} services
+                <span class="icon-cross pull-right" ng-click="cancel();" title="Cancel"></span>
+            </h3>
+        </div>
+	<div class="modal-body">
+	    
+		<div class="row row-separator">
+			<div class="col-xs-11" >
+				<div class="row">
+					<div class="col-xs-12">
+						<div spt-k-grid="tablaServicios" spt-k-grid-titulo=""></div>
+					</div>
+				</div>           
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-11 col-with-border" >
+				<div class="row">
+					<div class="col-xs-3" >
+						<label >new remark type</label>
+						<select id="tipoCalendario" name="tipoCalendario" ng-model="model.tipoCalendario" class="form-control input-sm" ng-options="item.idTipoCalendario as item.nombreTipoCalendario for item in model.aTiposCalendario"></select>
+					</div>
+					<div class="col-xs-8" >
+						<label>new remark text</label>
+						<textarea id="textoCalendario" name="textoCalendario" style="width: 100%; height: 58px;" ng-model="model.textoCalendario"></textarea>
+					</div>
+				</div>
+			</div>
+			
+		
+        </div>
+		</div
+	</div>
+	
+	<div class="modal-footer">
+        <div class="form-group pull-right">
+            <button type="button" class="btn btn-default" ng-click="ok()"><span class="icon-floppy-disk"></span>&nbsp;{{model.opc}}</button>
+        </div>
+    </div>
+
+</div>

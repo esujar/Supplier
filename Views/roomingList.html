@@ -1,0 +1,123 @@
+﻿
+<div class="container" id="informeRoomingList">
+	
+	<div class="row">
+        <div class="col-xs-12">
+            <div class="form-group pull-right" >   
+				<div class="btn-group btn-group-sm" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default btn-sm pull-right" ng-click="exportarPDF()" title="Export to Pdf"><img src="/js/angularApps/proveedores/Assets/_img/acroread.png"></button>
+                </div>
+                <button type='button' class="btn btn-default btn-sm" ng-click="volver()"><span class="icon-arrow-left5"></span> back</button>
+            </div>
+        </div>
+    </div>
+	
+    <div class="row">
+		<div class="col-xs-12 row-separator" ><label>Expedient</label>: {{m.cabecera.numero}} | {{m.cabecera.titulo}}
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-12 row-separator" ><label>Guide</label>: {{m.cabecera.liquidaciones[0].nombreGuia}} | {{m.cabecera.liquidaciones[0].emailGuia}}
+		</div>
+	</div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-8 salto-pagina-despues" ng-repeat="prst in m.informe">
+            <h4><span class="label label-info">--{{prst.razon_proveedor}} @ {{prst.n_g_ciudad}}-- ({{prst.inicio | date:'dd/MM/yyyy'}} - {{prst.fin | date:'dd/MM/yyyy'}})</span></h4>
+            <table class="table table-report table-condensed">
+                <thead>
+                    <tr class="definicion-anchos-columnas">
+                        <th style="width: 55mm;"></th>
+                        <th style="width: 15mm;"></th>
+                        <th style="width: 15mm;"></th>
+                        <th style="width: 15mm;"></th>
+                        <th style="width: 20mm;"></th>
+                        <th style="width: 15mm;"></th>
+                        <th style="width: 35mm;"></th>
+                        <th style="width: 10mm;"></th>
+                        <th style="width: 10mm;"></th>
+                    </tr>
+                    <tr>
+                        <th>name</th>
+                        <th>room</th>
+                        <th>d.o.b.</th>
+                        <th>nal</th>
+                        <th>passport</th>
+                        <th></th>
+                        <th>obs</th>
+                        <th>in</th>
+                        <th>out</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="pax in prst.pasajeros">
+                        <td title="{{pax.apellido_1_reserva_pasajero}}, {{pax.nombre_reserva_pasajero}}">{{pax.sexo_reserva_pasajero}} {{pax.apellido_1_reserva_pasajero}}, {{pax.nombre_reserva_pasajero}}</td>
+                        <td>{{pax.habitacion_tipo_reserva_pasajero}}</td>
+                        <td>{{pax.fechanacimiento | date:'dd/MM/yy'}}</td>
+                        <td title="{{pax.nacionalidad}}">{{pax.nacionalidad}}</td>
+                        <td>{{pax.pasaporte}}</td>
+                        <td>{{pax.pasaportecaducidad | date:'dd/MM/yy'}}</td>
+                        <td title="{{pax.obs_expediente}}">{{pax.obs_expediente}}</td>
+                        <td>{{pax.f_inicio | date:'dd/MM'}}</td>
+                        <td>{{pax.f_max | date:'dd/MM'}}</td>
+                    </tr>
+                </tbody>
+
+                <tbody>
+                    <tr ng-repeat="pax in prst.pasajerosCyg">
+                        <td title="{{pax.nombre_reserva_pasajero}}">{{pax.nombre_reserva_pasajero}}</td>
+                        <td>{{pax.habitacion_tipo_reserva_pasajero}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{pax.f_inicio | date:'dd/MM'}}</td>
+                        <td>{{pax.f_max | date:'dd/MM'}}</td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+
+                </tfoot>
+            </table>
+
+            <table class="table table-report table-condensed ">
+                <thead>
+                    <tr class="definicion-anchos-columnas">
+                        <th style="width: 30mm;"></th>
+                        <th style="width: 15mm"></th>
+                        <th style="width: 15mm;"></th>
+                        <th style="width: 15mm;"></th>
+                        <th style="width: 15mm;"></th>
+                        <th style="width: 110mm;"></th>
+                    </tr>
+                    <tr>
+                        <th>date</th>
+                        <th class="text-right">pax</th>
+                        <th class="text-right">sgl</th>
+                        <th class="text-right">dbl</th>
+                        <th class="text-right">tpl</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="fecha in prst.ocupacionesFechas">
+                        <td>{{fecha.f_dia | date:'dd/MM/yyyy'}}</td>
+                        <td class="text-right">{{fecha.TTLPAX}}<span style="display: inline-block; width: 1.4em;">{{fecha.CYG ? '+' + fecha.CYG : ''}}</span></td>
+                        <td class="text-right">{{fecha.SGL || ''}}</td>
+                        <td class="text-right">{{fecha.DBL || ''}}</td>
+                        <td class="text-right">{{fecha.TPL || ''}}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+
+</div>

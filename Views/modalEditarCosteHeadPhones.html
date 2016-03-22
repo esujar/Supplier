@@ -1,0 +1,41 @@
+﻿<div>
+    
+        <div class=" modal-header">
+            <h3 class="modal-title">
+              propose change of cost for Head Phones
+                <span class="icon-cross pull-right" ng-click="cancel();" title="Cancel"></span>
+            </h3>
+        </div>
+
+        <div class="modal-body">
+           
+                <form name="formCoste" novalidate>
+                     <div class="row">
+						<div class="col-xs-4" ng-class="{ 'has-error' : formCoste.costeProveedor.$invalid && model.submit}">
+							<label>proposed cost</label>
+							<input name="costeProveedor" type="text" placeholder="..." class="form-control input-sm" ng-model="model.costeProveedor" required spt-numero="{decimalPlaces: 2}"/>
+						</div>
+						 
+					 </div>
+                    <div class="row">
+						<div class="col-xs-10" ng-class="{ 'has-error' : formCoste.observacionesProveedor.$invalid && model.submit}">
+							<label>remark*</label>
+							<textarea name="observacionesProveedor" type="text" class="form-control input-sm" placeholder="..." ng-model="model.observacionesProveedor" rows="3"  required></textarea>
+						</div>
+					</div>
+
+                </form>
+				
+					
+               
+           
+        </div>     
+
+        <div class="modal-footer">
+            <div class="form-group pull-right">
+                <button type="button" class="btn btn-default" ng-click="ok(formCoste.$invalid)"><span class="icon-floppy-disk"></span>&nbsp;Accept</button>
+
+            </div>
+        </div>
+    
+</div>

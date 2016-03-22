@@ -1,0 +1,210 @@
+﻿  /*.container {*/
+	/**/
+            /*width: 100% !important;*/
+	        /*margin: 0 auto;*/
+	        /*height: auto !important;*/
+        /*}*/
+
+  table.dataTable tbody td {
+
+    font-size: 100% !important;
+}
+
+ /*body {*/
+        /*overflow-y: scroll;*/
+        /**/
+        /*}*/
+
+ table.dataTable thead a {
+font-size: small !important;
+}
+
+table.dataTable thead input[type=checkbox] {
+    width: 11px !important;
+}
+
+table.dataTable thead th {
+    font-size: 11px !important;
+}
+
+ .disabled {/*Class for disabled rows*/
+          background-color: #E8E8E8 !important;
+          color: green;
+
+        }
+
+ /* tweaks to get rid of some annoying stuff */
+.modal {
+  overflow: visible;
+}
+.modal:focus {
+  outline: 0;
+}
+
+.label-error {
+color: #D00000;
+font-weight: normal;
+}
+
+.rojoSpt {
+            color: #D00000;
+        }
+
+            .rojoSpt:hover { /* si se necesitase un color on hover*/
+                color: #A60000;
+                cursor: pointer;
+            }
+
+        .s {
+            font-size: 1em;
+        }
+
+
+        .m {
+            font-size: 2em;
+        }
+
+        .l {
+            font-size: 4em;
+        }
+
+.k-grid{
+    font-size: 96% !important;
+}
+
+tbody tr:hover { background-color:  #FFCDCD !important; font-weight:bold; font-size: 94% !important}
+
+.sts-RQ {
+background-color: red;
+color: white;
+
+}
+
+.sts-CLX {
+color: red;
+font-weight: bold;
+}
+
+
+.ctrlEnvio-2 {
+background-color: green;
+color: white;
+
+}
+
+.ctrlEnvio-4 {
+background-color: blue;
+color: white;
+
+}
+
+.sts-0 {
+background-color: red;
+color: white;
+
+}
+
+.sts-CF {
+background-color: green;
+color: white;
+width:100%;
+
+}
+
+.sts-PC {
+background-color: yellow;
+
+}
+
+.ctrlEnvio-5 {
+background-color: blue;
+color: white;
+
+}
+
+.ctrlEnvio-6 {
+background-color: red;
+color: white;
+
+}
+
+.ctrlEnvio-0 {
+background-color: yellow;
+color: black;
+
+}
+
+.row-separator {
+
+    padding-bottom:10px !important;
+
+}
+
+.btn-on-top {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+
+.btn-with-margin-left {
+    margin-left: 5px !important;
+}
+
+
+
+.login-centered {
+	float: none !important;
+	text-align: center !important;
+	margin: 0 auto !important;
+	border: 1px solid #d0d0d0;
+	border-radius: 10px;
+	padding: 2em;
+}
+
+/*#header{*/
+	/*height: 55px !important;*/
+/*}*/
+
+
+.sts-MOD {
+background-color: red;
+color: white;
+
+}
+
+.sts-New {
+background-color: green;
+color: white;
+width:100%;
+
+}
+
+.btn-login{
+	color: #ffffff;
+	background-color: #d00000;
+	border-color: #b70000;
+}
+
+#proveedores-app {
+    margin-top: 70px;
+}
+
+#proveedores-app  .icon-calendar-o:before {
+  font-size: 18px;
+}
+
+.label {
+    font-size: 95%;
+}
+
+.label-default {
+  background-color: #9d9c9c;
+}
+
+#spt-spinner-lite {
+    z-index: 9999;
+}
+
+.panel {
+    margin-bottom: 10px;
+}

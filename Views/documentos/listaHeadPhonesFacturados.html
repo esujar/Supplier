@@ -1,0 +1,92 @@
+<div>
+    <style type="text/css">
+	    @page { margin: 1em; }
+		@page { size: US-Letter landscape; }
+        .cabecera-informe {
+            font-size: 90%;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 0;
+        }
+        .cabecera-bloque {
+            font-size: 80%;
+            font-weight: bold;
+            margin: 4px 0 2px 0;
+        }
+        .tbl {
+	        border: none;
+	        border-collapse:separate;
+	        border-spacing:1px;
+	        margin-top: 0;
+	        --table-layout:fixed;
+	        width: 100%;
+        }
+        .tblHdr {
+            border-color: #D0D0D0;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+	        background-color:#F0F0F0;
+	        font-weight: bold;
+			font-family: Arial, times;
+            vertical-align: middle;
+            font-size: 95%;
+            line-height: 1em;
+            padding:5px 2px 5px 2px;
+        }
+        .tblData {
+            border-color: #D0D0D0;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+            vertical-align: top;
+            font-size: 80%;
+			font-family: Arial, times;
+            line-height: 0.95em;
+            padding: 5px 2px 5px 2px; 
+        }
+        .no-bottom-border {
+            border-bottom-width: 0;
+        }
+		.titulo-informe{
+		    font-size: 1.8em;
+			margin: .2em !important;
+			padding: .2em !important;
+			white-space: nowrap !important;
+			overflow: hidden;
+			background: linear-gradient(#D00000, #D00000, #A00000) repeat scroll 0 0 #D00000 !important;
+			color: #fff !important;
+			text-overflow: ellipsis;
+			font-family: Arial, times;
+  
+		}
+    </style>
+    <div class="titulo-informe">list of invoiced headphones.</div> 
+	<br/><br/>
+    <table class="tbl" style="repeat-header: yes;">
+        <thead>
+            <tr>
+                <td class="tblHdr" style="width: 9mm;">invoice</td>
+                <td class="tblHdr" style="width: 9mm;">cost</td>
+				
+                <td class="tblHdr" style="width: 9mm;">invoice date</td>
+                <td class="tblHdr" style="width: 9mm;">invoice validated</td>
+				<td class="tblHdr" style="width: 9mm;">pay date</td>
+                <td class="tblHdr" style="width: 9mm;">validation date</td>
+            </tr>
+        </thead>
+						
+		
+        <tr ng-repeat="srv in model.aFacturas">
+				<td class="tblData" style="width: 9mm;" ><strong>{{srv.numero}}</strong></td>						
+				<td class="tblData" style="text-align: center;width: 9mm;">{{srv.importe}}</td>
+				<td class="tblData" style="text-align: center;width: 9mm;">{{srv.fecha | date:"dd/MM/yyyy"}}</td>
+				<td class="tblData" style="width: 9mm;">{{srv.aprobada}}</td>
+				<td class="tblData" style="text-align: center;width: 9mm;">{{srv.fechaPagoPrevisto | date:"dd/MM/yyyy"}}</td>
+				<td class="tblData" style="text-align: center;width: 9mm;">{{srv.aprobadaFecha | date:"dd/MM/yyyy"}}</td>
+				
+				
+		</tr>
+		
+
+        
+    </table>
+</div>

@@ -1,0 +1,140 @@
+<div>
+    <style type="text/css">
+	    @page { margin: 1em; }
+		<!-- @page { size: US-Letter landscape; } -->
+		@page { size: A4 }
+        .cabecera-informe {
+            font-size: 90%;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 0;
+        }
+        .cabecera-bloque {
+            font-size: 80%;
+            font-weight: bold;
+            margin: 4px 0 2px 0;
+        }
+        .tbl {
+	        border: none;
+	        border-collapse:separate;
+	        border-spacing:1px;
+	        margin-top: 0;
+	        --table-layout:fixed;
+	        width: 100%;
+        }
+        .tblHdr {
+            border-color: #D0D0D0;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+	        background-color:#F0F0F0;
+	        font-weight: bold;
+			font-family: Arial, times;
+            vertical-align: middle;
+            font-size: 80%;
+            line-height: 1em;
+            padding:5px 2px 5px 2px;
+        }
+        .tblData {
+            border-color: #D0D0D0;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+            vertical-align: top;
+            font-size: 70%;
+			font-family: Arial, times;
+            line-height: 0.95em;
+            padding: 5px 2px 5px 2px; 
+        }
+        .no-bottom-border {
+            border-bottom-width: 0;
+        }
+		.titulo-informe{
+		    font-size: 1.4em;
+			margin: .2em !important;
+			padding: .2em !important;
+			white-space: nowrap !important;
+			overflow: hidden;
+			background: linear-gradient(#D00000, #D00000, #A00000) repeat scroll 0 0 #D00000 !important;
+			color: #fff !important;
+			text-overflow: ellipsis;
+			font-family: Arial, times;
+  
+		}
+    </style>
+    <div class="titulo-informe">custom list of transfer services.</div> 
+	<br/><br/>
+    <table class="tbl" style="repeat-header: yes;">
+        <thead>
+            <tr>
+                <td class="tblHdr" style="width: 11mm;">SpT id</td>
+                <td class="tblHdr" style="width: 14mm;">trf id</td>
+                <td class="tblHdr" style="width: 9mm;">status</td>
+                <td class="tblHdr" style="width: 17mm;">date</td>
+                <td class="tblHdr" style="width: 17mm;">city</td>
+                <td class="tblHdr" style="width: 9mm;">type</td>
+                <td class="tblHdr" style="width: 5mm;">pax</td>
+                <td class="tblHdr" style="width: 17mm;">time</td>
+                <td class="tblHdr" style="width: 61mm;">remarks</td>
+                <td class="tblHdr" style="width: 6mm;">mod</td>
+            </tr>
+        </thead>
+		<div  >
+		
+        <tr ng-repeat="trf in model.aTraslados">
+			<td colspan="10">
+				<table class="tbl">
+					<tr>
+						<td class="tblData" style="width: 11mm;" rowspan="2"><strong>{{trf.idReserva}}</strong></td>
+						<td class="tblData" style="width: 14mm;" rowspan="2"><strong>{{trf.idTrfKendo}}</strong></td>
+						<td class="tblData" style="width: 9mm;">{{trf.statusServicio}}</td>
+						<td class="tblData" style="text-align: center;width: 17mm;">{{trf.fecha | date:"dd/MMM/yyyy"}}</td>
+						<td class="tblData" style="width: 17mm;">{{trf.ciudad}}</td>
+						<td class="tblData" style="text-align: center;width: 9mm;">{{trf.tipo}}</td>
+						<td class="tblData" style="text-align: right;width: 5mm;">{{trf.totalPax}}</td>
+						<td class="tblData" style="width: 17mm;">{{trf.timeRangeKendo}}</td>
+						<td class="tblData" style="width: 61mm;">{{trf.observaciones}}</td>
+						<td class="tblData" style="width: 6mm;">{{trf.modificado? "yes" : ""}}</td>
+					</tr>
+					<tr ng-if="!trf.proveedoresTrasladosVuelos.length">
+						
+						<td class="tblData" colspan="8">
+							<p>
+								*** <strong>no transfer data available</strong>
+							</p>
+						</td>
+						
+					</tr>
+					<tr >
+						<td class="tblData" colspan="8" >
+							<p>
+								<strong>trf. tour leader:</strong> {{trf.guia ? trf.guia : "n/a"}}. <strong>trf. driver:</strong> {{trf.chofer ? trf.chofer : "n/a"}} .
+							</p>
+						</td>
+					</tr>
+					<tr ng-repeat="vlo in trf.proveedoresTrasladosVuelos"> <!-- ng-if="trf.proveedorTrasladosVuelos.length" -->
+						<td class="tblData" colspan="2" style="background: #f8f8f8;">&nbsp;</td>
+						<td colspan="8" class="tblData">
+							
+							*** <strong>{{vlo.statusAgrupa === "CLX" ? "CANCELLED ***" : "" }} {{vlo.vuelo ? vlo.vuelo : "no flight data available"}}</strong>
+							 <p>
+							- {{vlo.datosRecogida ? vlo.datosRecogida : "no pick up data available"}}<br />
+							- {{vlo.datosGenerales ? vlo.datosGenerales : "no SpT. data available"}}<br />
+							- {{vlo.datosPasajeros ? vlo.datosPasajeros : "no passengers data available"}}<br/>
+							- {{vlo.descripcion ? vlo.descripcion : ""}}
+							</p>
+									
+						</td>
+					</tr>
+					
+				</table>
+			</td>
+		</tr>
+		
+        
+        
+     
+		
+		
+    </div>
+        
+    </table>
+</div>

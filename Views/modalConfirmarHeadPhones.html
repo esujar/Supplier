@@ -1,0 +1,31 @@
+﻿<div>
+    
+        <div class=" modal-header">
+            <h3 class="modal-title">
+             Confirm Head Phone
+                <span class="icon-cross pull-right" ng-click="cancel();" title="Cancel"></span>
+            </h3>
+        </div>
+
+        <div class="modal-body">
+            <div class="row">
+                <form name="formHeadPhone" novalidate>
+					 <div class="row">
+						<div class="col-xs-10" ng-class="{ 'has-error' : formHeadPhone.observacionesProveedor.$invalid && model.submit}">
+							<label>remark*</label>
+							<textarea name="observacionesProveedor" type="text" class="form-control input-sm" placeholder="..." ng-model="model.observacionesProveedor" rows="3" ></textarea>
+						</div>
+					</div>
+                </form>
+            </div>    
+           
+        </div>     
+
+        <div class="modal-footer">
+            <div class="form-group pull-right">
+                <button type="button" class="btn btn-default" ng-click="ok(formHeadPhone.$invalid)"><span class="icon-floppy-disk"></span>&nbsp;Accept</button>
+
+            </div>
+        </div>
+    
+</div>

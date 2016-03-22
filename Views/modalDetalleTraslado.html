@@ -1,0 +1,130 @@
+﻿
+<div >
+    <style>
+       
+
+        .modal-lg {
+            width: 65% !important;
+        }
+        
+      
+
+       
+    </style>
+    <div class=" modal-header">
+		<h3 class="modal-title">
+		   {{modelTrf.tipoGestionTrf + modelTrf.codTrf}}: transfer service details
+			<span class="icon-cross pull-right" ng-click="cancel();" title="Cancel"></span>
+		</h3>
+    </div>
+	<div class="modal-body">	
+		<div class="row row-separator">
+			<div class="col-xs-11 col-with-border" >
+				<div class="row ">
+					<div class="col-xs-8" >
+						<div class="row row-separator">
+							<div class="col-xs-3">
+							   <label>date:</label>
+							   {{$filter('date')($scope.modelTrf.fecha, "dd/MM/yyyy")}}
+							</div>
+							<div class="col-xs-2">
+							   <label>city:</label>
+							   {{modelTrf.ciudad}}
+							</div>
+							<div class="col-xs-2">
+							   <label>type:</label>
+							   {{modelTrf.tipo}}
+							</div>
+							<div class="col-xs-2">
+							   <label>pax:</label>
+							   {{modelTrf.totalPax}}
+							</div>
+						</div>   
+						 <div class="row row-separator">
+							<div class="col-xs-5">
+							   <label>trf. tour leader:</label>
+							   {{modelTrf.guia}}
+							</div>
+							<div class="col-xs-5">
+							   <label>trf. driver:</label>
+							   {{modelTrf.chofer}}
+							</div>
+						
+						</div>
+						<div class="row ">
+							<div class="col-xs-12">
+							   <label>remarks:</label>
+							   {{modelTrf.observaciones}}
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-3 pull-right" >
+						<button type="button" class="btn btn-default pull-right btn-sm" ng-click="desconfirmarServicio()" title="unconfirm service" ng-show="model.btnDesconfirmarShow" ng-model="model.btnDesconfirmar"><span class="icon-cross rojoSpt"></span>&nbsp;</button>
+						<button type="button" class="btn btn-default pull-right btn-sm" ng-click="confirmarServicio()" title="confirm service" ng-show="model.btnConfirmarShow" ng-model="model.btnConfirmar"><span class="icon-checkmark rojoSpt"></span>&nbsp;</button>
+						<button type="button" class="btn btn-default pull-right btn-sm" ng-click="openEditarHora()" title="change hours" ng-show="model.btnEditarHoraShow" ng-model="model.btnEditarHora"><span class="icon-clock rojoSpt"></span>&nbsp;</button>
+						<button type="button" class="btn btn-default pull-right btn-sm" ng-click="openEditarCoste()" title="change Cost" ng-show="model.btnEditarCosteShow" ng-model="model.btnEditarCoste"><span class="icon-cash rojoSpt"></span>&nbsp;</button>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	
+		 <div class="row row-separator">
+			<div class="col-xs-11" >
+				<div class="row row-separator">
+				  <div class="col-xs-3"><label>transfer data</label></div>
+                    <button type="button" class="btn btn-default btn-sm pull-right" ng-click="editarServicioNoShow()" title="edit No Show" ><span class="icon-edit rojoSpt" ></span></button>				  
+					<button type="button" class="btn btn-default btn-sm pull-right" ng-click="openEditarHoraPickUp()" title="change pickup hours" ng-show="model.btnCambiarHoraPickUpShow"><span class="icon-clock rojoSpt" ></span></button>
+				  </div> 
+				  
+				<div class="row"><div class="horizontal-separator" /></div>
+				<div class="row">
+					<div class="col-xs-12">
+						<div spt-k-grid="tablaVuelos" spt-k-grid-titulo=""></div>
+					</div>
+				</div>
+            </div> 
+		</div>
+		<div class="row row-separator ">
+			<div class="col-xs-11 col-with-border" >
+				<div class="row row-separator">
+						<div class="col-xs-2">
+						   <label>service status:</label>
+						   <div>{{model.statusServicioView}}</div>
+						</div>
+						<div class="col-xs-2">
+						   <label>cost status:</label>
+						   <div>{{model.statusCosteView}}</div>
+						</div>
+						<div class="col-xs-8">
+							<div class="row">
+								<div class="col-xs-2">
+								   <label>time from:</label>
+								   <div>{{modelTrf.horaDesde}}</div>
+								</div>
+								<div class="col-xs-2">
+								   <label>time to:</label>
+								   <div>{{modelTrf.horaHasta}}</div>
+								</div>
+								<div class="col-xs-3">
+								   <label>estimated cost:</label>
+								   <div>{{modelTrf.costeTrf | number:2}}</div>
+								</div>
+								<div class="col-xs-3">
+								   <label>proposed cost:</label>
+								   <div>{{modelTrf.costePresupuesto | number:2}}</div>
+								</div>
+								<div class="col-xs-2">
+								   <label>currency:</label>
+								   <div>{{modelTrf.moneda}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+		     </div>   
+				 
+		</div>
+		
+	</div>
+</div>

@@ -1,0 +1,84 @@
+﻿
+<div class="container-fluid">
+	<div class="row row-separator ">
+		<div class="col-xs-9 col-with-border" >
+			<div class="row row-separator">
+				<div class="col-xs-11 pull-left col-without-padding">
+					<span class="label label-default label-header-sm">Hotel List</span>
+				</div>
+				<div class="col-xs-1  col-without-padding">
+					<button type="button" class="btn btn-default btn-sm pull-right" ng-click="exportarPDF()" title="Export to Pdf"><img src="/js/angularApps/proveedores/Assets/_img/acroread.png"></span></button>
+					<button type="button" class="btn btn-default btn-sm pull-right" ng-click="obtenerListadoHotelesAlternativos()" title="change hotel"><span class="icon-home rojoSpt"></span></button>
+					
+					<!-- <button type="button" class="btn btn-default btn-sm pull-right" ng-click="openDetalleHotel()" title="Details"><span class="icon-search rojoSpt"></span></button> -->
+				</div>
+			</div>
+
+
+			<div class="row ">
+				<div class="col-xs-12">
+					<div spt-k-grid="tablaServicios" spt-k-grid-titulo=""></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row row-separator ">
+		<div class="col-xs-9 col-with-border" >
+			<div class="row row-separator">
+					<div class="col-xs-2">
+					   <label>service status:</label>
+					   {{modelSrv.nombreStatusMostrar}}
+					</div>
+					<div class="col-xs-2">
+					   <label>supplier ref.:</label>
+					   {{modelSrv.localizadorReservaServicio}}
+					</div>
+					<div class="col-xs-1">
+					   <label>curr:</label>
+					   {{modelSrv.moneda}}
+					</div>
+					<div class="col-xs-1">
+					   <label>sgl:</label>
+					   {{modelSrv.costoSglReservaServicio | number:2}}
+					</div>
+					<div class="col-xs-1">
+					   <label>dbl:</label>
+					   {{modelSrv.costoDblReservaServicio | number:2}}
+					</div>
+					<div class="col-xs-1">
+					   <label>tpl:</label>
+					   {{modelSrv.costoTplReservaServicio | number:2}}
+					</div>
+					<div class="col-xs-2">
+					   <label>ttl. cost:</label>
+					   {{modelSrv.costoTotalReservaServicio | number:2}}
+					</div>
+				</div>   
+				 <div class="row row-separator">
+					<div class="col-xs-5 col-with-border" style="height:65px">
+					   {{modelSrv.nombreServicio}}
+					</div>
+					<div class="col-xs-5 col-with-border" style="height:65px">
+					   {{modelSrv.observacionesReservaServicio}}
+					</div>
+				
+				</div>
+			</div>
+	</div>   
+	<div class="row">
+		<div class="col-xs-9 col-with-border" >
+			<div class="row row-separator">
+				<div class="col-xs-11 pull-left col-without-padding">
+					<span class="label label-default label-header-sm">Pax List</span>
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div spt-k-grid="tablaPax" spt-k-grid-titulo=""></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	 
+</div>

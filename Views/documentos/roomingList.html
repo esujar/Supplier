@@ -1,0 +1,164 @@
+﻿<div>
+	 <style type="text/css">
+	    @page { margin: 1em; }
+		@page { size: US-Letter landscape; }
+        .cabecera-informe {
+            font-size: 90%;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 0;
+        }
+        .cabecera-bloque {
+            font-size: 80%;
+            font-weight: bold;
+            margin: 4px 0 2px 0;
+        }
+        .tbl {
+	        border: none;
+	        border-collapse:separate;
+	        border-spacing:1px;
+	        margin-top: 0;
+	        --table-layout:fixed;
+	        width: 100%;
+        }
+        .tblHdr {
+            border-color: #D0D0D0;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+	        background-color:#F0F0F0;
+	        font-weight: bold;
+			font-family: Arial, times;
+            vertical-align: middle;
+            font-size: 85%;
+            line-height: 1em;
+            padding:5px 2px 5px 2px;
+        }
+        .tblData {
+            border-color: #D0D0D0;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+            vertical-align: top;
+            font-size: 70%;
+			font-family: Arial, times;
+            line-height: 0.95em;
+            padding: 5px 2px 5px 2px; 
+        }
+        .no-bottom-border {
+            border-bottom-width: 0;
+        }
+		.titulo-informe{
+		    font-size: 1.8em;
+			margin: .2em !important;
+			padding: .2em !important;
+			white-space: nowrap !important;
+			overflow: hidden;
+			background: linear-gradient(#D00000, #D00000, #A00000) repeat scroll 0 0 #D00000 !important;
+			color: #fff !important;
+			text-overflow: ellipsis;
+			font-family: Arial, times;
+  
+		}
+    </style>
+	<div class="titulo-informe">rooming list.</div> 
+	<br/><br/>
+    <div class="row">
+		<div class="col-xs-12 row-separator" ><label>Expedient</label>: {{m.cabecera.numero}} | {{m.cabecera.titulo}}
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-12 row-separator" ><label>Guide</label>: {{m.cabecera.liquidaciones[0].nombreGuia}} | {{m.cabecera.liquidaciones[0].emailGuia}}
+		</div>
+	</div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-8 salto-pagina-despues" ng-repeat="prst in m.informe">
+            <h4><span class="label label-info">--{{prst.razon_proveedor}} @ {{prst.n_g_ciudad}}-- ({{prst.inicio | date:'dd/MM/yyyy'}} - {{prst.fin | date:'dd/MM/yyyy'}})</span></h4>
+            <table class="tbl" style="repeat-header: yes;">
+                <thead>
+                    <tr >
+                        <th style="width: 55mm;"></th>
+                        <th style="width: 15mm;"></th>
+                        <th style="width: 15mm;"></th>
+                        <th style="width: 15mm;"></th>
+                        <th style="width: 20mm;"></th>
+                        <th style="width: 15mm;"></th>
+                        <th style="width: 35mm;"></th>
+                        <th style="width: 10mm;"></th>
+                        <th style="width: 10mm;"></th>
+                    </tr>
+                    <tr>
+                        <td class="tblHdr" style="width: 55mm;">name</td>
+                        <td class="tblHdr" style="width: 15mm;">room</td>
+                        <td class="tblHdr" style="width: 15mm;">d.o.b.</td>
+                        <td class="tblHdr" style="width: 15mm;">nal</td>
+                        <td class="tblHdr" style="width: 20mm;">passport</td>
+                        <td class="tblHdr" style="width: 15mm;"></td>
+                        <td class="tblHdr" style="width: 35mm;">obs</td>
+                        <td class="tblHdr" style="width: 10mm;">in</td>
+                        <td class="tblHdr" style="width: 10mm;">out</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="pax in prst.pasajeros">
+                        <td  class="tblData" title="{{pax.apellido_1_reserva_pasajero}}, {{pax.nombre_reserva_pasajero}}">{{pax.sexo_reserva_pasajero}} {{pax.apellido_1_reserva_pasajero}}, {{pax.nombre_reserva_pasajero}}</td>
+                        <td class="tblData">{{pax.habitacion_tipo_reserva_pasajero}}</td>
+                        <td class="tblData">{{pax.fechanacimiento | date:'dd/MM/yy'}}</td>
+                        <td class="tblData" title="{{pax.nacionalidad}}">{{pax.nacionalidad}}</td>
+                        <td class="tblData">{{pax.pasaporte}}</td>
+                        <td class="tblData">{{pax.pasaportecaducidad | date:'dd/MM/yy'}}</td>
+                        <td class="tblData" title="{{pax.obs_expediente}}">{{pax.obs_expediente}}</td>
+                        <td class="tblData">{{pax.f_inicio | date:'dd/MM'}}</td>
+                        <td class="tblData">{{pax.f_max | date:'dd/MM'}}</td>
+                    </tr>
+                </tbody>
+
+                <tbody>
+                    <tr ng-repeat="pax in prst.pasajerosCyg">
+                        <td title="{{pax.nombre_reserva_pasajero}}">{{pax.nombre_reserva_pasajero}}</td>
+                        <td>{{pax.habitacion_tipo_reserva_pasajero}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{pax.f_inicio | date:'dd/MM'}}</td>
+                        <td>{{pax.f_max | date:'dd/MM'}}</td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+
+                </tfoot>
+            </table>
+			<br/><br/>
+            <table class="tbl" style="repeat-header: yes;">
+                <thead>
+                    <tr>
+                        <td class="tblHdr" style="width: 30mm;">date</td>
+                        <td class="tblHdr" style="width: 15mm;">pax</td>
+                        <td class="tblHdr" style="width: 15mm;">sgl</td>
+                        <td class="tblHdr" style="width: 15mm;">dbl</td>
+                        <td class="tblHdr" style="width: 15mm;">tpl</td>
+                        <td class="tblHdr" style="width: 110mm;"></td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="fecha in prst.ocupacionesFechas">
+                        <td class="tblData">{{fecha.f_dia | date:'dd/MM/yyyy'}}</td>
+                        <td class="tblData">{{fecha.TTLPAX}}<span style="display: inline-block; width: 1.4em;">{{fecha.CYG ? '+' + fecha.CYG : ''}}</span></td>
+                        <td class="tblData">{{fecha.SGL || ''}}</td>
+                        <td class="tblData">{{fecha.DBL || ''}}</td>
+                        <td class="tblData">{{fecha.TPL || ''}}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+
+</div>
